@@ -8,14 +8,14 @@
   <meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/5+hHgAFgwJ/lx4AAAAASUVORK5CYII=">
 
   <!-- Inter – cały projekt -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- ========== STYLE ================================================== -->
   <style>
 /* === paleta Chromify × Gold ========================================= */
 :root{
   --bg:#FFFFFF;      --bg-alt:#F1F1F2;  --border:#D9D8D7;
-  --accent:#D3BC97;  --accent-light:#E9DFCA;  --accent-dark:#BFA476;
+  --accent:#D3BC97;  --accent-light:#E9DFCA;  --accent-dark:#8c6a39;
   --success:#4CAF50; --txt:#1A1A1A;
   --highlight:#FFFFFFDD;  --shadow:#00000022; --inner:#00000033;
   --radius:999px; --duration:.25s; --blur:40px; --gloss:#FFFFFF40;
@@ -27,10 +27,11 @@
 }
 /* === reset & global ================================================== */
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--txt);line-height:1.45;}
+body{background:var(--bg);color:var(--txt);line-height:1.5;}
 h1,h2,h3,h4{font-weight:700;line-height:1.2;}
+ul{line-height:1.5;}
 section{padding:80px 20px;}
-.container{max-width:1100px;margin:auto}
+.container{max-width:clamp(1100px,80vw,1400px);margin:auto}
 
 /* === przyciski złote ================================================= */
 .btn-gold{
@@ -46,6 +47,7 @@ section{padding:80px 20px;}
   transition:opacity var(--duration);}
 .btn-gold:hover{transform:translateY(-2px);}
 .btn-gold:hover::after{opacity:1;}
+.btn-gold:focus{outline:none;box-shadow:0 0 0 3px #8c6a39;}
 .btn-mini{padding:12px 32px;font-size:1rem;}
 
 /* === progress bar ==================================================== */
@@ -57,7 +59,7 @@ section{padding:80px 20px;}
 
 /* === HERO ============================================================ */
 .hero{padding:120px 20px 100px;text-align:center;position:relative;}
-.hero h1{font-size:clamp(2rem,5vw,2.8rem);margin-bottom:18px;}
+.hero h1{font-size:clamp(2rem,5vw,2.8rem);hyphens:auto;margin-bottom:18px;}
 .hero p{font-size:1.15rem;max-width:640px;margin:0 auto 34px;}
 .timer-bar{
   display:inline-flex;align-items:center;gap:14px;padding:12px 24px;border-radius:var(--radius);
@@ -154,10 +156,13 @@ section{padding:80px 20px;}
   box-shadow:0 3px 6px var(--shadow),inset 0 1px 2px var(--highlight);} 
 .mod-card h3{margin:0 0 4px;font-size:1.05rem;font-weight:700;}
 .mod-card p{margin:0;font-size:.92rem;line-height:1.42;}
-.bonus-table{width:100%;border-collapse:collapse;margin-top:2.2rem;font-size:.95rem;}
-.bonus-table th,.bonus-table td{padding:10px;border:1px solid var(--border);} 
-.bonus-table th{background:var(--bg-alt);} 
-.bonus-table tr:nth-child(even){background:#fafafa}
+@media (prefers-color-scheme: light) {
+  .mod-card .icon { background:#646464; }
+}
+.bonus-table{width:100%;border-collapse:collapse;margin-top:2.2rem;font-size:.95rem;background:#fff;}
+.bonus-table th,.bonus-table td{padding:10px;border:1px solid var(--border);background:#fff;}
+.bonus-table th{background:#fff;}
+.bonus-table tr:nth-child(even){background:#fff}
 
 /* === Guarantee (glass) =========================================== */
 .zbg-box{
@@ -169,7 +174,7 @@ section{padding:80px 20px;}
               0 4px 12px -4px var(--chrome-shadow);} 
 .zbg-title{font-size:2rem;font-weight:800;text-align:center;margin:0 0 1.4rem;}
 .zbg-lead{text-align:center;font-size:1.04rem;line-height:1.46;margin:0 0 1.45rem;}
-.zbg-list{list-style:none;padding:0;margin:0 auto 1.55rem;max-width:560px;font-size:1rem;line-height:1.6;}
+.zbg-list{list-style:none;padding:0;margin:0 auto 1.55rem;max-width:560px;font-size:1rem;line-height:1.5;}
 .zbg-list li{position:relative;padding-left:1.9rem;margin:.55rem 0;}
 .zbg-list li::before{content:"✔";position:absolute;left:0;top:0;color:#c10000;font-weight:700;}
 .zbg-cta{text-align:center;font-size:1.08rem;font-weight:700;line-height:1.4;}
@@ -186,7 +191,7 @@ section{padding:80px 20px;}
   box-shadow:inset 0 1px 1px var(--chrome-hl),inset 0 -1px 1px #ffffff26,
               0 4px 12px -4px var(--chrome-shadow);} 
 .notfor-title{font-size:1.85rem;font-weight:800;text-align:center;margin:0 0 1.3rem;}
-.notfor-list{list-style:none;padding:0;margin:0 auto 1.7rem;max-width:640px;font-size:1rem;line-height:1.6;}
+.notfor-list{list-style:none;padding:0;margin:0 auto 1.7rem;max-width:640px;font-size:1rem;line-height:1.5;}
 .notfor-list li{position:relative;padding-left:2.1rem;margin:.55rem 0;}
 .notfor-list li::before{content:"✖";position:absolute;left:0;top:0;color:#d90000;font-weight:700;font-size:1.05rem;}
 .notfor-cta{text-align:center;font-size:1.05rem;font-weight:600;line-height:1.45;}
@@ -226,7 +231,7 @@ section{padding:80px 20px;}
 
 <!-- ================= HERO ======================================= -->
 <header class="hero">
-  <h1>Zbuduj własny Micro-SaaS&nbsp;na GPT<br><small style="font-size:1.2rem;font-weight:500;">— zarabiaj w PLN zanim rynek zrobi się tłoczny</small></h1>
+  <h1>Zbuduj własny Micro-SaaS&shy;&nbsp;na GPT<br><small style="font-size:1.2rem;font-weight:500;">— zarabiaj w PLN zanim rynek zrobi się tłoczny</small></h1>
   <p>Jedyny polski raport, który krok-po-kroku prowadzi od <strong>pomysłu</strong> do <strong>pierwszych 5-cyfrowych przychodów</strong> w ≤ 90 dni.</p>
   <a href="#buy" class="btn-gold">Kupuję raport • 1 990 PLN</a>
   <div class="timer-bar"><span class="timer-dot">⏰</span> Cena rośnie za <strong id="hero-timer">--d --h --m --s</strong></div>
