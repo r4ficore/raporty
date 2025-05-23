@@ -86,8 +86,8 @@ section{padding:80px 20px;}
 
 /* === PROBLEM / SOLUTION ============================================ */
 .problem{display:grid;gap:40px;}
-@media(min-width:992px){.problem{grid-template-columns:1fr 1fr;align-items:center;} }
-.problem ul{list-style:none;display:grid;gap:14px;font-size:1rem;}
+@media(min-width:992px){.problem{grid-template-columns:1fr 1fr;align-items:center;column-gap:32px;} }
+.problem ul{list-style:none;display:grid;gap:14px;font-size:1rem;max-width:480px;}
 .problem li::before{content:"⚡";margin-right:8px;color:var(--accent-dark);}
 
 /* === Tabela Przed/Po =============================================== */
