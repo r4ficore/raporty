@@ -7,9 +7,9 @@
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/5+hHgAFgwJ/lx4AAAAASUVORK5CYII=">
   <meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/5+hHgAFgwJ/lx4AAAAASUVORK5CYII=">
 
-  <!-- Inter – cały projekt -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
+  <!-- Tailwind + styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style/main.css">
   <!-- ========== STYLE ================================================== -->
   <style>
 /* === paleta Chromify × Gold ========================================= */
@@ -23,7 +23,7 @@
   --chrome-bg:linear-gradient(145deg,#f8f9fa 0%,#e9ecef 100%);
   --chrome-border:#ffffffb0; --chrome-hl:rgba(255,255,255,.45);
   --chrome-shadow:rgba(0,0,0,.12);
-  font-family:"Inter",Arial,sans-serif;
+  font-family:'Inter','IBM Plex Sans',sans-serif;
 }
 /* === reset & global ================================================== */
 *{box-sizing:border-box;margin:0;padding:0}
@@ -31,10 +31,10 @@ body{background:var(--bg);color:var(--txt);line-height:1.5;}
 h1,h2,h3,h4{font-weight:700;line-height:1.2;}
 ul{line-height:1.5;}
 section{padding:80px 20px;}
-.container{max-width:clamp(1100px,80vw,1400px);margin:auto}
+.container{max-width:clamp(1100px,80vw,1400px);margin-left:auto;margin-right:auto;padding-left:32px;padding-right:32px}
 
 /* === przyciski złote ================================================= */
-.btn-gold{
+.btn{
   display:inline-block;padding:22px 90px;font-size:1.25rem;font-weight:600;
   border-radius:var(--radius);color:#fff;text-decoration:none;
   background:linear-gradient(160deg,var(--accent-light) 0%,var(--accent) 60%,var(--accent-dark) 100%);
@@ -42,13 +42,13 @@ section{padding:80px 20px;}
   box-shadow:0 8px 18px -6px var(--shadow),inset 0 1px 2px var(--highlight);
   transition:all var(--duration);
 }
-.btn-gold::after{content:"";position:absolute;inset:0;
+.btn::after{content:"";position:absolute;inset:0;
   background:linear-gradient(to bottom,var(--gloss) 0%,transparent 70%);opacity:0;
   transition:opacity var(--duration);}
-.btn-gold:hover{transform:translateY(-2px);}
-.btn-gold:hover::after{opacity:1;}
-.btn-gold:focus{outline:none;box-shadow:0 0 0 3px #8c6a39;}
-.btn-mini{padding:12px 32px;font-size:1rem;}
+.btn:hover{transform:translateY(-2px);}
+.btn:hover::after{opacity:1;}
+.btn:focus{outline:none;box-shadow:0 0 0 3px #8c6a39;}
+.btn-small{padding:8px 24px;font-size:.875rem;}
 
 /* === progress bar ==================================================== */
 .progress{
@@ -237,6 +237,16 @@ section{padding:80px 20px;}
 </head>
 
 <body>
+<nav class="bg-white shadow">
+  <div class="container flex items-center justify-between py-4">
+    <a href="#" class="text-xl font-bold text-indigo-700">RaportGPT</a>
+    <ul class="hidden md:flex gap-6 text-sm">
+      <li><a href="#buy" class="text-gray-700 hover:text-indigo-700">Kup teraz</a></li>
+      <li><a href="#faq" class="text-gray-700 hover:text-indigo-700">FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
 
 <!-- progress bar -->
 <div class="progress"></div>
@@ -245,7 +255,7 @@ section{padding:80px 20px;}
 <header class="hero">
   <h1>Zarabianie na Custom GPT jako Micro‑SaaS – Raport Rynkowy 2025</h1>
   <p>Jedyny polski raport, który krok-po-kroku prowadzi od <strong>pomysłu</strong> do <strong>pierwszych 5-cyfrowych przychodów</strong> w ≤ 90 dni.</p>
-  <a href="#buy" class="btn-gold">Kupuję raport • 1 990 PLN</a>
+  <a href="#buy" class="btn">Kupuję raport • 1 990 PLN</a>
   <div class="timer-bar"><span class="timer-dot">⏰</span> Cena rośnie za <strong id="hero-timer">--d --h --m --s</strong></div>
 </header>
 
@@ -291,7 +301,7 @@ section{padding:80px 20px;}
     <div>
       <h2>Rozwiązanie – Raport 2025</h2>
       <p><strong>37‑stronicowy „blueprint”</strong> skondensowany z 50 h riserczu: konkretne ścieżki monetyzacji, rankingi nisz o najwyższym ARPU i 5 case studies ≥ 20 000 zł MRR.</p>
-      <a href="#buy" class="btn-gold btn-mini">Sprawdź plan działania</a>
+      <a href="#buy" class="btn btn-small">Sprawdź plan działania</a>
     </div>
   </div>
 </section>
@@ -334,6 +344,33 @@ section{padding:80px 20px;}
       <li><b>Payback:</b> <strong id="days"></strong> dni</li>
       <li><b>LTV-profit / user:</b> <strong id="ltv"></strong> PLN</li>
     </ul>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD SAMPLE ============================ -->
+<section class="container my-8">
+  <header class="mb-4">
+    <form class="flex flex-wrap gap-2 items-end">
+      <label for="filter" class="text-sm font-medium">Filtruj:</label>
+      <input id="filter" type="text" class="border rounded flex-1 p-2" />
+      <button class="btn btn-small">Szukaj</button>
+    </form>
+  </header>
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <article class="p-4 rounded-lg bg-white shadow hover:shadow-lg">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="font-semibold">Raport 1</h3>
+        <button class="btn btn-small">Pobierz</button>
+      </div>
+      <p class="text-sm text-gray-600">Opis przykładowego raportu dla demo.</p>
+    </article>
+    <article class="p-4 rounded-lg bg-white shadow hover:shadow-lg">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="font-semibold">Raport 2</h3>
+        <button class="btn btn-small">Pobierz</button>
+      </div>
+      <p class="text-sm text-gray-600">Opis przykładowego raportu dla demo.</p>
+    </article>
   </div>
 </section>
 
@@ -454,12 +491,12 @@ section{padding:80px 20px;}
       <li>Czytasz 2‑3 h, wypełniasz check‑listę i <strong>publikujesz własne GPT‑MVP przed końcem miesiąca</strong>.</li>
     </ol>
     <p style="font-size:0.95rem;max-width:600px;margin:auto;">🛡️ Gwarancja 30 dni: jeśli nie odzyskasz ceny raportu w ciągu 90 dni od wdrożenia choć jednej rekomendacji, zwracamy 100 % bez gadania.</p>
-    <a href="#buy" class="btn-gold" style="margin-top:28px;">Kupuję PDF + bonusy</a>
+    <a href="#buy" class="btn" style="margin-top:28px;">Kupuję PDF + bonusy</a>
   </div>
 </section>
 
 <!-- ============ FAQ ============================================ -->
-<section>
+<section id="faq">
   <div class="container">
     <h2 style="text-align:center;margin-bottom:30px;">FAQ – Najczęściej zadawane pytania</h2>
     <button class="acc-btn" aria-expanded="false">Czy ten raport jest tylko dla programistów?</button><div class="acc-panel"><p>Nie. 80 % treści to strategia biznesowa, marketing, pricing i case’y. Techniczne fragmenty (stack no‑code, limity tokenów) są opisane tak, by ogarnąć je osoba nietechniczna – wystarczy umieć klikać w Zapier/Make.</p></div>
@@ -477,15 +514,17 @@ section{padding:80px 20px;}
 <section class="final" id="buy">
   <h2>Gotowy ruszyć?</h2>
   <p>Klikasz „kup teraz”, pobierasz PDF + bonusy i publikujesz GPT‑MVP <strong>przed końcem miesiąca</strong>.</p>
-  <a href="#buy" class="btn-gold">Rezerwuję PDF + bonusy</a>
+  <a href="#buy" class="btn">Rezerwuję PDF + bonusy</a>
   <div class="timer-bar" style="margin-top:40px"><span class="timer-dot">⏰</span> Cena rośnie za <strong id="final-timer">--d --h --m --s</strong></div>
 </section>
 
 <!-- ============ STICKY CTA ===================================== -->
 <div class="sticky-cta">
   📄 PDF + bonusy — cena rośnie za <span id="sticky-time">--d --h --m --s</span>
-  <a href="#buy" class="btn-gold btn-mini">Kup teraz</a>
+  <a href="#buy" class="btn btn-small">Kup teraz</a>
 </div>
+
+</main>
 
 <!-- ============ SCRIPTS ======================================== -->
 <script>
