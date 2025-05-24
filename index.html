@@ -95,7 +95,19 @@ section{padding:80px 20px;}
 .problem li::before{content:"⚡";margin-right:8px;color:var(--accent-dark);}
 
 /* === Tabela Przed/Po =============================================== */
-.compare-table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;margin-top:40px;}
+.compare-table{
+  display:block;
+  overflow-x:auto;
+  width:100%;
+  border-collapse:collapse;
+  margin-top:40px;
+  background:var(--chrome-bg);
+  border:1px solid var(--chrome-border);
+  border-radius:18px;
+  box-shadow:0 4px 12px var(--chrome-shadow),inset 0 1px 1.5px var(--chrome-hl);
+  backdrop-filter:blur(28px);
+  color:#1b1b1b;
+}
 .compare-table th,.compare-table td{padding:14px;border:1px solid var(--border);}
 .compare-table th{background:var(--bg-alt);}
 .compare-table tr:nth-child(even){background:#FAFAFA;}
